@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Card Hand Manager</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      max-width: 400px;
+      margin: auto;
+    }
+    .card {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: box-shadow 0.3s;
+    }
+    .card:hover {
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    .card img {
+      max-width: 100%;
+      border-radius: 5px;
+    }
+    button {
+      margin: 5px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    .hand {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Card Hand Manager</h1>
+  <button onclick="drawCard()">Draw Card (<span id="deck-count"></span>)</button>
+  <button onclick="resetGame()">Reset Game</button>
+  <h2>Your Hand</h2>
+  <div id="hand" class="hand"></div>
+  <p>Discard Pile: <span id="discard-count">0</span> cards</p>
+
+  <script>
+    const initialDeck = [
+      {
+        id: 1,
+        title: "Flame Shot",
+        description: "Deal 5 damage to all enemies.",
+        image: "https://via.placeholder.com/100x140?text=Flame+Shot"
+      },
+      {
+        id: 2,
+        title: "Healing Light",
+        description: "Restore 7 health.",
+        image: "https://via.placeholder.com/100x140?text=Healing+Light"
+      },
+      {
+        id: 3,
+        title: "Shield Block",
+        description: "Gain 5 armor.",
+        image: "https://via.placeholder.com/100x140?text=Shield+Block"
+      },
+      {
+        id: 4,
+        title: "Ice Nova",
+        description: "Freeze all enemies for 1 turn.",
+        image: "https://via.placeholder.com/100x140?text=Ice+Nova"
+      }
+    ];
+
+    let deck = [];
+    let hand = [];
+    let discardPile = [];
+
+    function shuffle(array) {
+      return array.sort(() => Math.random() - 0.5);
+    }
+
+    function updateUI() {
+      document.getElementById("deck-count").textContent = deck.length;
+      document.getElementById("discard-count").textContent = discardPile.length;
+
+      const handContainer = document.getElementById("hand");
+      handContainer.innerHTML = "";
+
+      hand.forEach(card => {
+        const cardDiv = document.createElement("div");
+        cardDiv.className = "card";
+        cardDiv.onclick = () => discardCard(card.id);
+
+        cardDiv.innerHTML = `
+          <img src="${card.image}" alt="${card.title}" />
+          <h3>${card.title}</h3>
+          <p>${card.description}</p>
+        `;
+
+        handContainer.appendChild(cardDiv);
+      });
+    }
+
+    function drawCard() {
+      if (deck.length === 0) return;
+      const card = deck.shift();
+      hand.push(card);
+      updateUI();
+    }
+
+    function discardCard(cardId) {
+      const index = hand.findIndex(card => card.id === cardId);
+      if (index > -1) {
+        discardPile.push(hand.splice(index, 1)[0]);
+        updateUI();
+      }
+    }
+
+    function resetGame() {
+      deck = shuffle([...initialDeck]);
+      hand = [];
+      discardPile = [];
+      updateUI();
+    }
+
+    resetGame();
+  </script>
+</body>
+</html>
