@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "title": "Flame Shot",
+    "description": "Deal 5 damage to all enemies.",
+    "image": "https://via.placeholder.com/100x140?text=Flame+Shot"
+  },
+  {
+    "id": 2,
+    "title": "Healing Light",
+    "description": "Restore 7 health.",
+    "image": "https://via.placeholder.com/100x140?text=Healing+Light"
+  },
+  {
+    "id": 3,
+    "title": "Shield Block",
+    "description": "Gain 5 armor.",
+    "image": "https://via.placeholder.com/100x140?text=Shield+Block"
+  }
+]
