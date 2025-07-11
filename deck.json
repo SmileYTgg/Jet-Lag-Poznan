@@ -1,20 +1,44 @@
 [
   {
     "id": 1,
-    "title": "Flame Shot",
-    "description": "Deal 5 damage to all enemies.",
-    "image": "https://via.placeholder.com/100x140?text=Flame+Shot"
+    "title": "+5 min",
+    "description": "+5 min",
+    "image": "5_min.png"
   },
   {
     "id": 2,
-    "title": "Healing Light",
-    "description": "Restore 7 health.",
-    "image": "https://via.placeholder.com/100x140?text=Healing+Light"
+    "title": "+5 min",
+    "description": "+5 min",
+    "image": "5_min.png"
   },
   {
     "id": 3,
-    "title": "Shield Block",
-    "description": "Gain 5 armor.",
-    "image": "https://via.placeholder.com/100x140?text=Shield+Block"
-  }
+    "title": "+10 min",
+    "description": "+10 min",
+    "image": "10_min.png"
+  },
+  {
+    "id": 4,
+    "title": "+15 min",
+    "description": "+15 min",
+    "image": "15_min.png"
+  },
+  {
+    "id": 5,
+    "title": "Curse of a Placeholder",
+    "description": "This is a placeholder",
+    "image": "curse.png"
+  },
+  {
+    "id": 6,
+    "title": "Curse of a Lazy man",
+    "description": "I am to lazy to come up with something",
+    "image": "curse.png"
+  },
+  {
+    "id": 7,
+    "title": "Discard 2 Draw 3",
+    "description": "Discard 2 cards and draw 3 new ones",
+    "image": "action.png"
+  },
 ]
