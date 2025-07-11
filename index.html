@@ -48,33 +48,7 @@
   <p>Discard Pile: <span id="discard-count">0</span> cards</p>
 
   <script>
-    const initialDeck = [
-      {
-        id: 1,
-        title: "Flame Shot",
-        description: "Deal 5 damage to all enemies.",
-        image: "https://via.placeholder.com/100x140?text=Flame+Shot"
-      },
-      {
-        id: 2,
-        title: "Healing Light",
-        description: "Restore 7 health.",
-        image: "https://via.placeholder.com/100x140?text=Healing+Light"
-      },
-      {
-        id: 3,
-        title: "Shield Block",
-        description: "Gain 5 armor.",
-        image: "https://via.placeholder.com/100x140?text=Shield+Block"
-      },
-      {
-        id: 4,
-        title: "Ice Nova",
-        description: "Freeze all enemies for 1 turn.",
-        image: "https://via.placeholder.com/100x140?text=Ice+Nova"
-      }
-    ];
-
+    let initialDeck = [];
     let deck = [];
     let hand = [];
     let discardPile = [];
@@ -127,7 +101,16 @@
       updateUI();
     }
 
-    resetGame();
+    // Load deck from external JSON file
+    fetch('deck.json')
+      .then(response => response.json())
+      .then(data => {
+        initialDeck = data;
+        resetGame();
+      })
+      .catch(err => {
+        console.error('Failed to load deck:', err);
+      });
   </script>
 </body>
 </html>
